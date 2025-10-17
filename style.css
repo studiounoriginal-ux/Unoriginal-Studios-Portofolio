@@ -1076,4 +1076,8 @@ a.work-link {
     transform: translateY(-9px) rotate(-45deg);
 }
 
+/* Mencegah Scrolling saat Menu Hamburger terbuka */
+body.overflow-hidden {
+    overflow: hidden;
+}
 
