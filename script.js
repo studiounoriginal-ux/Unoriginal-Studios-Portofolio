@@ -2,6 +2,30 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     
+    // Fungsionalitas Hamburger Menu
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = mobileMenu.querySelectorAll('a'); // Ambil semua tautan di menu
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('menu-open');
+        hamburgerBtn.classList.toggle('is-active');
+        // Toggle class 'overflow-hidden' pada body untuk mencegah scrolling saat menu terbuka
+        document.body.classList.toggle('overflow-hidden'); 
+    }
+    
+    // Event listener untuk tombol hamburger
+    hamburgerBtn.addEventListener('click', toggleMenu);
+
+    // Event listener agar menu tertutup saat tautan diklik (mobile)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('menu-open')) {
+                toggleMenu();
+            }
+        });
+    });
+    
     // 1. Temukan semua elemen yang ingin dianimasikan
     // Di sini kita menargetkan semua item di galeri 'works'
     const animatedItems = document.querySelectorAll('.work-item');
@@ -120,3 +144,4 @@ document.addEventListener("DOMContentLoaded", function() {
     loadNews();
 
 });
+
