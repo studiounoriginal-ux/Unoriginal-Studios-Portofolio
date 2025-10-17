@@ -1,11 +1,21 @@
+/* ========================================================= */
+/* ====== PENGATURAN GLOBAL DAN TATA LETAK DASAR ====== */
+/* ========================================================= */
+
 /* Reset dan Pengaturan Dasar */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #0a0a0a;
+    background-color: #0a0a0a; /* Dark Mode Utama */
     color: #ffffff;
     line-height: 1.6;
+    scroll-behavior: smooth; /* Scroll halus */
+}
+
+/* Mencegah Scrolling saat Menu Hamburger terbuka */
+body.overflow-hidden {
+    overflow: hidden;
 }
 
 .container {
@@ -14,11 +24,19 @@ body, html {
     padding: 0 20px;
 }
 
-/* Header dan Navigasi */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================================================= */
+/* ====== HEADER DAN NAVIGASI (GLOBAL) ====== */
+/* ========================================================= */
+
 .main-header {
-    background-color: rgba(10, 10, 10, 0.8);
+    background-color: rgba(10, 10, 10, 0.9);
     backdrop-filter: blur(10px);
-    padding: 20px 0;
+    padding: 15px 0; /* Padding vertikal default desktop */
     position: fixed;
     width: 100%;
     top: 0;
@@ -31,14 +49,19 @@ body, html {
     align-items: center;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 900;
-    color: #ffffff;
-    text-decoration: none;
-    letter-spacing: 2px;
+/* Logo Gambar */
+.main-header .logo img {
+    height: 35px; /* Ukuran default desktop */
+    width: auto;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
 }
 
+.main-header .logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Navigasi Desktop */
 .main-nav ul {
     margin: 0;
     padding: 0;
@@ -56,13 +79,54 @@ body, html {
 }
 
 .main-nav a:hover {
-    color: #ffffff;
+    color: #007bff; /* Warna Aksen saat hover */
 }
+
+/* Tombol Hamburger (Tersembunyi di Desktop) */
+.hamburger-menu {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 101; 
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Gaya Transisi Hamburger menjadi Silang (X) */
+.hamburger-menu.is-active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* ========================================================= */
+/* ====== INDEX.HTML (HERO & WORKS) ====== */
+/* ========================================================= */
 
 /* Bagian Hero */
 .hero-section {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080.png/111111?text=Hero+Background') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080.png/303030?text=Karya+Terbaru') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,6 +135,7 @@ body, html {
 
 .hero-content {
     max-width: 800px;
+    padding-top: 50px; 
 }
 
 .hero-content h1 {
@@ -84,6 +149,7 @@ body, html {
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 40px;
+    color: #cccccc;
 }
 
 .cta-button {
@@ -94,13 +160,15 @@ body, html {
     font-weight: 700;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
 }
 
 .cta-button:hover {
-    background-color: #cccccc;
+    background-color: #007bff;
+    color: #ffffff;
 }
 
-/* Bagian Works */
+/* Bagian Works (Portofolio Grid) */
 .works-section {
     padding: 100px 0;
     background-color: #121212;
@@ -125,10 +193,19 @@ body, html {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Animasi Scroll Default */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.work-item.visible {
+    opacity: 1; 
+    transform: translateY(0); 
 }
 
 .work-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px); 
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -152,24 +229,15 @@ body, html {
     color: #a0a0a0;
 }
 
-/* Footer */
-.main-footer {
-    background-color: #0a0a0a;
-    padding: 40px 0;
-    text-align: center;
-    border-top: 1px solid #222;
-}
 
-.main-footer p {
-    margin: 0;
-    color: #a0a0a0;
-}
-
-/* ====== Gaya Halaman Detail Proyek ====== */
+/* ========================================================= */
+/* ====== PROJECT DETAIL PAGE ====== */
+/* ========================================================= */
 
 .project-header {
     height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(10, 10, 10, 1)), url('https://via.placeholder.com/1920x800.png/111111?text=Project+A+Visual') no-repeat center center/cover;
+    padding-top: 80px; 
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(10, 10, 10, 1)), url('https://via.placeholder.com/1920x800.png/303030?text=Project+A+Visual') no-repeat center center/cover;
 }
 
 .project-content {
@@ -180,11 +248,11 @@ body, html {
 }
 
 .project-main {
-    flex: 3; /* Ambil 3 bagian ruang */
+    flex: 3; 
 }
 
 .project-sidebar {
-    flex: 1; /* Ambil 1 bagian ruang */
+    flex: 1; 
 }
 
 .project-title {
@@ -208,13 +276,13 @@ body, html {
     margin-bottom: 20px;
 }
 
-/* Info Box di Sidebar */
+/* Info Box di Sidebar (Sticky) */
 .info-box {
     background-color: #1a1a1a;
     border-radius: 8px;
     padding: 25px;
     position: sticky;
-    top: 120px; /* Jarak dari atas setelah header */
+    top: 120px; 
 }
 
 .info-box h3 {
@@ -241,12 +309,13 @@ body, html {
 
 .info-box strong {
     color: #a0a0a0;
+    display: block;
 }
 
 /* Kontainer Video Responsif */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+    padding-bottom: 56.25%; 
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -263,55 +332,29 @@ body, html {
     height: 100%;
 }
 
-a.work-link {
-    text-decoration: none;
-    color: inherit;
-}
 
-/* ====== Gaya Animasi ====== */
+/* ========================================================= */
+/* ====== ABOUT US PAGE ====== */
+/* ========================================================= */
 
-/* Sembunyikan .work-item secara default */
-.work-item {
-    /* ... (kode lama jangan dihapus) ... */
-    
-    /* Tambahan untuk animasi: */
-    opacity: 0; /* Mulai dengan transparan */
-    transform: translateY(20px); /* Mulai sedikit ke bawah */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Tampilkan elemen saat memiliki class 'visible' */
-.work-item.visible {
-    opacity: 1; /* Jadi terlihat penuh */
-    transform: translateY(0); /* Kembali ke posisi semula */
-}
-
-/* ====== GAYA BARU: Halaman About Us ====== */
-
-/* ====== GAYA BARU: Halaman About Us yang Dipercantik ====== */
-
-/* -------------------- About Hero -------------------- */
 .about-hero {
-    height: 70vh; /* Sedikit lebih tinggi */
+    height: 70vh; 
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding-top: 80px; 
-    
-    /* Tambahkan latar belakang gelap yang subtle */
     background: url('https://via.placeholder.com/1920x1080.png/121212?text=Geometric+Pattern') repeat;
-    background-size: 100px; /* Pola geometri kecil */
-    border-bottom: 5px solid #007bff; /* Garis aksen biru */
+    background-size: 100px;
+    border-bottom: 5px solid #007bff; 
 }
 
 .about-title {
-    font-size: 5.5rem; /* Lebih besar dan mencolok */
+    font-size: 5.5rem; 
     font-weight: 900;
     margin-bottom: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    /* Efek teks gradien yang sudah kita gunakan di Contact */
     background: linear-gradient(90deg, #ffffff, #a0a0a0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -321,33 +364,30 @@ a.work-link {
 
 .about-tagline {
     font-size: 1.6rem;
-    color: #cccccc; /* Lebih terang dari sebelumnya */
+    color: #cccccc; 
     font-weight: 400;
 }
 
-/* -------------------- Content Split (Visi/Misi) -------------------- */
 .about-content-section {
     padding: 100px 0;
-    background-color: #0a0a0a; /* Kontras dengan hero */
+    background-color: #0a0a0a; 
 }
 
-/* Tata letak fleksibel yang sekarang menggunakan kontras visual */
 .content-split {
     display: flex;
-    align-items: flex-start; /* Gambar dan teks sejajar di atas */
+    align-items: flex-start; 
     gap: 80px;
     margin-bottom: 80px;
 }
 
 .split-text {
-    flex: 2; /* Beri lebih banyak ruang untuk teks */
+    flex: 2; 
     padding-top: 20px;
 }
 
 .split-image {
     flex: 1; 
     position: relative;
-    /* Tambahkan sedikit efek kedalaman pada gambar */
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     overflow: hidden;
@@ -361,16 +401,16 @@ a.work-link {
 }
 
 .split-image:hover img {
-    transform: scale(1.05); /* Efek zoom in saat hover */
+    transform: scale(1.05); 
 }
 
 .split-text h2 {
     font-size: 3rem;
     margin-bottom: 25px;
-    border-left: 5px solid #007bff; /* Garis aksen vertikal */
+    border-left: 5px solid #007bff; 
     padding-left: 20px;
     padding-bottom: 0;
-    border-bottom: none; /* Hapus garis bawah lama */
+    border-bottom: none; 
 }
 
 .split-text p {
@@ -379,7 +419,7 @@ a.work-link {
     color: #a0a0a0;
 }
 
-/* -------------------- Team Section -------------------- */
+/* Bagian Tim */
 .team-section {
     padding: 80px 0;
     background-color: #121212;
@@ -399,7 +439,7 @@ a.work-link {
 }
 
 .team-member {
-    max-width: 280px; /* Ukuran anggota tim sedikit diperbesar */
+    max-width: 280px; 
     background-color: #1a1a1a;
     padding: 30px;
     border-radius: 12px;
@@ -408,17 +448,17 @@ a.work-link {
 }
 
 .team-member:hover {
-    transform: translateY(-5px); /* Efek angkat saat hover */
-    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.2); /* Bayangan dengan warna aksen */
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.2); 
 }
 
 .team-member img {
-    width: 180px; /* Gambar lebih besar */
+    width: 180px; 
     height: 180px;
     border-radius: 50%; 
     object-fit: cover;
     margin-bottom: 20px;
-    border: 5px solid #007bff; /* Border dengan warna aksen */
+    border: 5px solid #007bff; 
 }
 
 .team-member h3 {
@@ -428,56 +468,159 @@ a.work-link {
 }
 
 .team-member p {
-    color: #007bff; /* Warna aksen untuk jabatan */
+    color: #007bff; 
     font-size: 1rem;
     font-weight: 700;
 }
 
 
-/* Responsifitas (Pastikan tetap di bagian bawah CSS) */
-@media (max-width: 900px) {
-    .content-split {
-        flex-direction: column;
-    }
+/* ========================================================= */
+/* ====== NEWS PAGE ====== */
+/* ========================================================= */
 
-    .about-title {
-        font-size: 4rem;
-    }
-    
-    .team-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .team-member {
-        width: 100%; /* Lebar penuh di mobile */
-        max-width: 400px;
-    }
+.news-hero {
+    height: 40vh; 
+    display: flex;
+    align-items: center;
+    padding-top: 80px; 
+    background-color: #0a0a0a; 
+    border-left: 5px solid #007bff; 
+    border-bottom: 1px solid #333; 
 }
 
-/* Lanjutan dari style.css yang sudah ada... */
+.news-hero .container {
+    padding-left: 40px; 
+}
 
-/* ====== GAYA BARU: Halaman Contact ====== */
+.news-title {
+    font-size: 4.5rem; 
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #ffffff, #cccccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+}
+
+.news-list-section {
+    padding: 80px 0;
+    background-color: #121212;
+}
+
+/* Kategori Filter */
+.news-filter {
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px; 
+}
+
+.filter-item {
+    color: #a0a0a0;
+    font-weight: 700;
+    padding: 12px 25px; 
+    margin: 0 5px;
+    border-radius: 50px; 
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid #333;
+    display: inline-block;
+}
+
+.filter-item:hover {
+    color: #ffffff;
+    background-color: #333;
+    transform: translateY(-1px);
+}
+
+.filter-item.active {
+    color: #0a0a0a;
+    background-color: #007bff; 
+    border-color: #007bff;
+}
+
+/* Kontainer Berita */
+.news-item {
+    display: flex;
+    align-items: center;
+    padding: 30px 20px; 
+    border-bottom: 1px solid #1a1a1a;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border-left: 5px solid transparent; 
+}
+
+.news-item:hover {
+    background-color: #1a1a1a;
+    transform: translateX(10px); 
+    border-left: 5px solid #007bff; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.news-date {
+    flex: 0 0 150px; 
+    font-weight: 400; 
+    color: #a0a0a0;
+    font-size: 0.95rem;
+}
+
+.news-category {
+    flex: 0 0 110px; 
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 8px 12px; 
+    margin-right: 30px;
+    border-radius: 4px;
+    color: #0a0a0a;
+    text-transform: uppercase;
+}
+
+.category-works { background-color: #007bff; }
+.category-event { background-color: #ffc107; }
+.category-company { background-color: #28a745; }
+
+.news-heading {
+    flex-grow: 1;
+    margin: 0;
+    font-size: 1.3rem; 
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.news-item:hover .news-heading {
+    color: #ffffff; 
+}
+
+.load-more {
+    text-align: center;
+    padding-top: 50px;
+}
+
+
+/* ========================================================= */
+/* ====== CONTACT PAGE ====== */
+/* ========================================================= */
 
 .contact-section {
-    padding-top: 120px; /* Jarak dari header fixed */
+    padding-top: 120px; 
     padding-bottom: 100px;
     background-color: #121212;
 }
 
 .contact-title {
-    font-size: 5rem; /* Sedikit lebih besar */
+    font-size: 5rem;
     font-weight: 900;
     text-align: center;
     margin-bottom: 10px;
     text-transform: uppercase;
-    
-    /* Efek teks gradient (seperti logo modern) */
     background: linear-gradient(90deg, #ffffff, #a0a0a0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: transparent; /* Fallback for unsupported browsers */
+    color: transparent; 
 }
 
 .contact-subtitle {
@@ -493,76 +636,16 @@ a.work-link {
 }
 
 .contact-form-container {
-    flex: 2; /* Formulir mengambil 2/3 ruang */
+    flex: 2; 
 }
 
-/* Gaya detail kontak */
 .contact-details {
-    flex: 1;
+    flex: 1; 
     background-color: #1a1a1a;
     padding: 30px;
     border-radius: 8px;
-    height: fit-content;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan */
-}
-
-.info-item {
-    margin-bottom: 25px;
-    border-bottom: 1px dashed #333; /* Pemisah yang lebih stylish */
-    padding-bottom: 15px;
-}
-
-.info-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.info-item h3 {
-    font-size: 1.2rem;
-    margin: 0 0 5px 0;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-}
-
-.info-item i {
-    color: #007bff; /* Warna aksen untuk ikon */
-    margin-right: 10px;
-    font-size: 1.3rem;
-}
-
-.info-item a {
-    color: #007bff; /* Warna aksen untuk email */
-    text-decoration: none;
-}
-
-.info-item a:hover {
-    text-decoration: underline;
-}
-
-/* Gaya Ikon Sosial */
-.social-links {
-    text-align: center;
-    border-bottom: none;
-    padding-top: 10px;
-}
-
-.social-icon {
-    font-size: 1.8rem;
-    color: #ffffff;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-    color: #007bff; /* Warna aksen saat hover */
-}
-
-/* Penyesuaian responsif untuk judul */
-@media (max-width: 600px) {
-    .contact-title {
-        font-size: 3rem;
-    }
+    height: fit-content; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .contact-form-container h2 {
@@ -584,61 +667,29 @@ a.work-link {
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
+.contact-form input[type="subject"],
 .contact-form textarea {
     width: 100%;
-    padding: 12px;
+    padding: 15px; 
     border: 1px solid #333;
-    background-color: #0a0a0a;
+    background-color: #1a1a1a; 
     color: #ffffff;
-    border-radius: 4px;
+    border-radius: 8px; 
     font-size: 1rem;
-    box-sizing: border-box; /* Penting agar padding tidak melebarkan elemen */
-    transition: border-color 0.3s ease;
-}
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form input[type="subject"], /* Tambahkan subjek */
-.contact-form textarea {
-    width: 100%;
-    padding: 15px; /* Padding lebih besar */
-    border: 1px solid #333;
-    background-color: #1a1a1a; /* Ubah background input menjadi lebih gelap dari body */
-    color: #ffffff;
-    border-radius: 8px; /* Border radius lebih lembut */
-    font-size: 1rem;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     transition: border-color 0.3s ease;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: #007bff; /* Gunakan warna aksen biru saat fokus */
+    border-color: #007bff; 
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .submit-button {
-    background-color: #ffffff;
-    color: #0a0a0a;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: 700;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Tambahkan transisi transform */
-    width: auto;
     text-transform: uppercase;
-}
-
-.submit-button:hover {
-    background-color: #cccccc;
-    transform: translateY(-2px); /* Efek angkat saat hover */
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
-.submit-button:hover {
-    background-color: #cccccc;
+    border: none;
 }
 
 /* Gaya Detail Kontak */
@@ -650,210 +701,95 @@ a.work-link {
     padding-bottom: 10px;
 }
 
-/* Responsifitas untuk halaman Contact */
-@media (max-width: 900px) {
-    .contact-content-split {
-        flex-direction: column;
-    }
-    
-    .contact-form-container, .contact-details {
-        flex: auto;
-    }
-    
-    .contact-title {
-        font-size: 3rem;
-    }
+.info-item {
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #333; 
+    padding-bottom: 15px;
 }
 
-/* Lanjutan dari style.css yang sudah ada... */
+.info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
 
-/* ====== GAYA BARU: Halaman News ====== */
-
-/* ====== GAYA BARU: Halaman News yang Dipercantik ====== */
-
-.news-hero {
-    height: 40vh;
+.info-item h3 {
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    color: #ffffff;
     display: flex;
     align-items: center;
-    padding-top: 80px; 
-    background-color: #0a0a0a; /* Ubah ke warna latar belakang utama */
-    /* Garis aksen vertikal di samping kiri, mirip dengan section 'About' */
-    border-left: 5px solid #007bff; 
-    border-bottom: 1px solid #333; /* Border halus di bawah */
 }
 
-.news-hero .container {
-    padding-left: 40px; /* Tambahkan padding agar judul tidak terlalu dekat dengan border kiri */
+.info-item i {
+    color: #007bff; 
+    margin-right: 10px;
+    font-size: 1.3rem;
 }
 
-.news-title {
-    font-size: 4.5rem; /* Ukuran lebih besar */
-    font-weight: 900;
-    margin: 0;
-    text-transform: uppercase;
-    /* Efek teks gradien putih-abu */
-    background: linear-gradient(90deg, #ffffff, #cccccc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 2px;
+.info-item a {
+    color: #007bff; 
+    transition: color 0.3s ease;
 }
 
-.news-list-section {
-    padding: 80px 0;
-    background-color: #121212; /* Kontras dengan hero */
+.info-item a:hover {
+    text-decoration: underline;
 }
 
-/* Kategori Filter */
-.news-filter {
-    text-align: center;
-    margin-bottom: 50px;
-    border-bottom: 2px solid #333;
-    padding-bottom: 15px; /* Padding lebih besar */
-}
-
-.filter-item {
-    color: #a0a0a0;
-    text-decoration: none;
-    font-weight: 700;
-    padding: 12px 25px; /* Padding lebih besar */
-    margin: 0 5px;
-    border-radius: 50px; /* Bentuk pil/rounded */
-    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-    border: 1px solid #333;
-}
-
-.filter-item:hover {
+.social-icon {
+    font-size: 1.8rem;
     color: #ffffff;
-    background-color: #333;
-    transform: translateY(-1px);
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
-.filter-item.active {
-    color: #0a0a0a;
-    background-color: #007bff; /* Warna aksen utama */
-    border-color: #007bff;
+.social-icon:hover {
+    color: #007bff; 
 }
 
-/* Kontainer Berita */
-.news-container {
-    /* Hapus border top yang lama */
-    padding: 0; 
-}
-
-.news-item {
-    display: flex;
-    align-items: center;
-    padding: 30px 20px; /* Padding lebih besar */
-    border-bottom: 1px solid #1a1a1a;
-    text-decoration: none;
-    color: #ffffff;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    border-left: 5px solid transparent; /* Garis aksen yang akan muncul saat hover */
-}
-
-.news-item:hover {
-    background-color: #1a1a1a;
-    transform: translateX(10px); /* Efek slide ringan ke kanan */
-    border-left: 5px solid #007bff; /* Garis aksen muncul */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.news-date {
-    flex: 0 0 150px;
-    font-weight: 400; /* Lebih ringan */
-    color: #a0a0a0;
-    font-size: 0.95rem;
-}
-
-.news-category {
-    flex: 0 0 110px; 
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-align: center;
-    padding: 8px 12px; /* Padding lebih besar */
-    margin-right: 30px;
-    border-radius: 4px;
-    color: #0a0a0a;
-    text-transform: uppercase;
-}
-
-/* Warna Kategori */
-.category-works {
-    background-color: #007bff; 
-}
-
-.category-event {
-    background-color: #ffc107; 
-}
-
-.category-company {
-    background-color: #28a745; 
-}
-
-.news-heading {
-    flex-grow: 1;
-    margin: 0;
-    font-size: 1.
-
-    /* Gaya untuk Logo Gambar di Header */
-    }
-.main-header .logo img {
-    height: 30px; /* Atur tinggi logo sesuai kebutuhan Anda */
-    width: auto; /* Lebar akan menyesuaikan secara proporsional */
-    vertical-align: middle; /* Memastikan logo sejajar dengan elemen lain jika ada */
-    transition: transform 0.3s ease; /* Efek hover ringan */
-}
-
-.main-header .logo img:hover {
-    transform: scale(1.05); /* Sedikit membesar saat di-hover */
-}
-
-/* Jika sebelumnya Anda memiliki gaya untuk .logo (teks), mungkin perlu disesuaikan atau dihapus */
-/* Contoh: Jika .logo sebelumnya mengatur font-size, letter-spacing, dll.,
-   gaya tersebut mungkin tidak lagi diperlukan untuk gambar. */
-.logo {
-    /* Hapus atau komentari gaya yang hanya berlaku untuk teks logo,
-       misalnya: font-size, font-weight, letter-spacing */
-    /* font-size: 24px; */
-    /* font-weight: 900; */
-    /* letter-spacing: 2px; */
-    color: #ffffff; /* Biarkan jika Anda ingin link area tetap berwarna */
-    text-decoration: none;
-}
-
-/* Jika Anda ingin area link logo menjadi lebih kecil, sesuaikan padding header */
-.main-header .container {
-    padding: 5px 10px; /* Sesuaikan padding header jika logo gambar lebih kecil/besar */
-}
-
-.main-header {
-    /* Kurangi padding vertikal di sini */
-    padding: 15px 0; /* Mengurangi dari 20px 0 menjadi 15px 0 */
-    background-color: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px); 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-}
 
 /* ========================================================= */
-/* ====== UI TINGKAT LANJUT (Di dalam @media (max-width: 768px)) ====== */
+/* ====== FOOTER ====== */
+/* ========================================================= */
+
+.main-footer {
+    background-color: #0a0a0a;
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.main-footer p {
+    margin: 0;
+    color: #a0a0a0;
+}
+
+
+/* ========================================================= */
+/* ====== MEDIA QUERIES (MOBILE RESPONSIVE) ====== */
 /* ========================================================= */
 
 @media (max-width: 768px) {
-
-/* ========================================================= */
-/* ====== UI TINGKAT LANJUT (Di dalam @media (max-width: 768px)) ====== */
-/* ========================================================= */
-@media (max-width: 768px) {
     
-    /* HEADER dan NAVIGASI */
+    /* PENGATURAN GLOBAL MOBILE */
+    .container {
+        padding: 0 15px; 
+    }
+    
+    body {
+        font-size: 16px;
+    }
+    
+    /* HEADER dan NAVIGASI MOBILE */
+    .main-header {
+        padding: 8px 0; /* Header sangat tipis */
+    }
+
     .main-header .container {
-        /* Kontrol penempatan hamburger */
         justify-content: space-between; 
+    }
+
+    .logo img {
+        height: 25px; /* Logo sangat kecil dan ringkas */
     }
     
     /* Tampilkan Hamburger Menu */
@@ -863,82 +799,56 @@ a.work-link {
 
     /* Atur Navigasi untuk Dropdown Mobile */
     .main-nav {
-        /* Posisi tetap, menutupi seluruh layar */
         position: fixed; 
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.95); /* Latar belakang gelap transparan */
+        background-color: rgba(0, 0, 0, 0.95); 
         z-index: 100;
-        
-        /* Default: Sembunyikan menu */
         transform: translateX(100%); 
         transition: transform 0.4s ease-in-out;
-        
-        /* Atur flex agar konten berada di tengah */
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    /* Saat menu aktif, geser ke posisi 0 */
     .main-nav.menu-open {
         transform: translateX(0);
     }
 
     .main-nav ul {
-        /* Overwrite display: none dari kode lama */
         display: block; 
         text-align: center;
         padding: 0;
     }
     
     .main-nav li {
-        margin: 40px 0; /* Jarak antar item besar */
+        margin: 40px 0; 
     }
 
     .main-nav a {
-        font-size: 2rem; /* Teks menu besar dan mudah diklik */
+        font-size: 2rem; 
         font-weight: 900;
         color: #cccccc;
     }
     
-    .main-nav a:hover {
-        color: #007bff;
+    /* SPASI VERTIKAL ANTAR SECTION */
+    .works-section,
+    .about-content-section,
+    .team-section,
+    .news-list-section,
+    .contact-section {
+        padding: 60px 0; 
     }
-    
-    /* ... kode responsif lainnya ... */
-}
-    
-    /* PENGATURAN GLOBAL MOBILE */
-    body {
-        font-size: 16px; /* Pastikan font dasar nyaman dibaca */
-    }
-
-    /* HEADER dan NAVIGASI */
-  .main-header {
-        /* Kurangi padding vertikal di sini untuk membuat header lebih tipis */
-        padding: 8px 0; 
-    }
-
-    .logo img {
-        /* KURANGI UKURAN LOGO LEBIH LANJUT */
-        height: 25px; /* Coba 25px. Ini akan membuat logo sangat kecil dan ringkas */
-    }
-    
-    /* Karena navigasi utama (.main-nav ul) disembunyikan, 
-       pastikan tautan ikon atau hamburger menu (jika ada) berada di posisi yang baik. 
-       Untuk saat ini, kita akan fokus pada konten. */
     
     /* HERO SECTION */
     .hero-section {
-        height: 70vh; /* Perkecil tinggi hero agar konten cepat terlihat */
-        /* Sesuaikan tinggi hero agar CTA tidak terpotong di layar pendek */
+        height: 70vh; 
     }
 
     .hero-content h1 {
-        font-size: 2.2rem; /* Judul yang lebih mudah ditangani di layar sempit */
+        font-size: 2.2rem; 
         line-height: 1.2;
         margin-bottom: 15px;
     }
@@ -948,136 +858,146 @@ a.work-link {
         margin-bottom: 30px;
     }
     
-    /* SPASI VERTIKAL ANTAR SECTION */
-    .works-section,
-    .about-content-section,
-    .team-section,
-    .news-list-section,
-    .contact-section {
-        padding: 60px 0; /* Kurangi spasi vertikal antar section */
-    }
-    
     /* WORKS SECTION (Portofolio) */
     .works-section h2 {
-        font-size: 2.5rem; /* Judul section tetap besar, tapi tidak terlalu dominan */
+        font-size: 2.5rem; 
         margin-bottom: 40px;
     }
-    
-    .work-info h3 {
-        font-size: 1.3rem; /* Judul proyek tidak terlalu besar */
+
+    .works-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
     }
     
-    .work-info p {
-        font-size: 0.85rem;
+    /* PROJECT DETAIL PAGE */
+    .project-header {
+        height: 40vh; 
+    }
+    
+    .project-content {
+        flex-direction: column; 
+        gap: 30px;
+        padding-bottom: 50px;
     }
 
-    /* PROJECT DETAIL PAGE */
-    .project-main h2 {
-        font-size: 1.8rem; /* Judul sub-bagian lebih kecil */
-        margin-top: 30px;
-        margin-bottom: 15px;
-    }
-    
     .project-title {
         font-size: 2.8rem;
     }
-    
-    .project-tagline {
-        font-size: 1rem;
+
+    .project-sidebar {
+        order: -1; 
     }
 
+    .info-box {
+        position: static; 
+        top: auto;
+    }
+    
     /* NEWS PAGE */
     .news-title {
         font-size: 3rem;
+        padding-left: 20px;
+    }
+    
+    .news-hero .container {
+        padding-left: 20px;
     }
     
     .news-item {
-        /* Tambahkan efek padding horizontal lebih baik */
+        flex-wrap: wrap; 
         padding: 20px 0; 
-        border-left: none; /* Hapus border kiri di mobile agar tidak memakan tempat */
+        border-left: none; /* Hapus efek border kiri di mobile */
     }
-    
+
     .news-item:hover {
         transform: none; /* Hapus efek slide di mobile */
         border-left: none;
-        background-color: #1a1a1a;
+    }
+
+    .news-date {
+        flex: 0 0 100%; 
+        margin-bottom: 5px;
+    }
+    
+    .news-category {
+        margin-right: 15px;
+        margin-bottom: 10px;
     }
 
     .news-heading {
         font-size: 1.15rem;
-        line-height: 1.4;
+        flex: 1 1 0%;
     }
     
-    /* CONTACT PAGE */
-    .contact-form-container h2 {
+    .filter-item {
+        display: inline-block;
+        margin: 5px 5px 5px 0;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    /* ABOUT US PAGE */
+    .about-title {
+        font-size: 3.5rem;
+    }
+    
+    .about-tagline {
+        font-size: 1.2rem;
+    }
+
+    .content-split {
+        flex-direction: column; 
+        gap: 30px;
+    }
+    
+    .split-text h2 {
         font-size: 2rem;
-        margin-bottom: 20px;
+    }
+    
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .team-member {
+        max-width: 100%; 
+        width: 90%; 
     }
 
-    .contact-details h2 {
-        font-size: 1.5rem;
+    /* CONTACT PAGE */
+    .contact-title {
+        font-size: 3rem;
     }
-
+    
+    .contact-content-split {
+        flex-direction: column; 
+        gap: 40px;
+    }
+    
+    .contact-details {
+        order: -1; 
+    }
+    
     .submit-button {
+        width: 100%; 
         font-size: 1rem;
         padding: 12px 25px;
     }
-    
-    /* FOOTER */
-    .main-footer {
-        padding: 20px 0;
-        font-size: 0.85rem;
-    }
 }
 
-/* Penyesuaian khusus untuk layar sangat kecil (seperti iPhone SE) */
+
+/* Penyesuaian untuk layar sangat kecil */
 @media (max-width: 450px) {
-    /* ... kode sebelumnya ... */
+    .contact-title, .about-title {
+        font-size: 2.5rem;
+    }
     
-    /* Pastikan header juga ringkas di resolusi terkecil */
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
     .main-header {
         padding: 5px 0; 
     }
 }
-
-/* Gaya Tombol Hamburger (Tersembunyi di Desktop) */
-.hamburger-menu {
-    display: none; /* Default: Sembunyikan di Desktop */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    position: relative;
-    z-index: 101; /* Pastikan di atas menu */
-}
-
-.hamburger-menu .bar {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #ffffff;
-    border-radius: 3px;
-    margin: 6px 0;
-    transition: all 0.3s ease;
-}
-
-/* Gaya Transisi Hamburger menjadi Silang (X) */
-.hamburger-menu.is-active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-
-.hamburger-menu.is-active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.is-active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* Mencegah Scrolling saat Menu Hamburger terbuka */
-body.overflow-hidden {
-    overflow: hidden;
-}
-
