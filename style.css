@@ -838,3 +838,171 @@ a.work-link {
     top: 0;
     z-index: 100;
 }
+
+/* ========================================================= */
+/* ====== RESPONSIF UTAMA (Untuk Mobile dan Tablet Kecil) ====== */
+/* ========================================================= */
+@media (max-width: 768px) {
+    
+    /* PENGATURAN UMUM */
+    .container {
+        padding: 0 15px; /* Kurangi padding horizontal agar konten lebih lebar */
+    }
+
+    /* HEADER */
+    .main-header {
+        padding: 10px 0; /* Header lebih tipis */
+    }
+
+    .main-nav ul {
+        /* Sembunyikan navigasi utama dan pertimbangkan menu hamburger (diluar lingkup CSS murni) */
+        display: none; 
+        /* Untuk portofolio sederhana, kita bisa biarkan ikon saja */
+    }
+    
+    .logo img {
+        height: 30px; /* Pastikan logo tetap kecil */
+    }
+    
+    /* HERO SECTION */
+    .hero-content h1 {
+        font-size: 2.5rem; /* Judul Hero diperkecil */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* WORKS SECTION (Portofolio) */
+    .works-section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .works-grid {
+        /* Grid tetap dengan 1 kolom atau 2 kolom kecil */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* NEWS PAGE */
+    .news-title {
+        font-size: 3rem;
+    }
+
+    /* Pindahkan item berita ke mode tumpukan (Stack mode) */
+    .news-item {
+        flex-wrap: wrap; 
+        padding: 15px 10px;
+        align-items: flex-start;
+    }
+
+    .news-date {
+        flex: 0 0 100%; /* Tanggal ambil 100% lebar */
+        margin-bottom: 5px;
+    }
+    
+    .news-category {
+        margin-right: 15px;
+        margin-bottom: 10px;
+    }
+
+    .news-heading {
+        font-size: 1.1rem;
+        flex: 1 1 0%;
+    }
+    
+    .news-filter {
+        /* Buat filter menjadi tombol blok kecil */
+        text-align: left;
+    }
+    
+    .filter-item {
+        display: inline-block;
+        margin: 5px 5px 5px 0;
+        padding: 8px 15px;
+        font-size: 0.8rem;
+    }
+
+    /* ABOUT US PAGE */
+    .about-title {
+        font-size: 3.5rem;
+    }
+    
+    .about-tagline {
+        font-size: 1.2rem;
+    }
+
+    .content-split {
+        flex-direction: column; /* Teks dan Gambar bertumpuk */
+        gap: 30px;
+    }
+    
+    .split-text h2 {
+        font-size: 2rem;
+    }
+    
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .team-member {
+        max-width: 100%; 
+        width: 90%; 
+    }
+
+    /* PROJECT DETAIL PAGE */
+    .project-header {
+        height: 40vh; /* Perkecil header visual */
+    }
+    
+    .project-content {
+        flex-direction: column; /* Detail utama dan sidebar bertumpuk */
+        gap: 30px;
+        padding-bottom: 50px;
+    }
+
+    .project-title {
+        font-size: 2.5rem;
+    }
+
+    .project-sidebar {
+        order: -1; /* Pindahkan sidebar (info box) ke atas di mobile */
+    }
+
+    .info-box {
+        position: static; /* Non-sticky di mobile */
+        top: auto;
+    }
+    
+    /* CONTACT PAGE */
+    .contact-title {
+        font-size: 3rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .contact-content-split {
+        flex-direction: column; /* Formulir dan detail bertumpuk */
+        gap: 40px;
+    }
+    
+    .contact-details {
+        order: -1; /* Detail kontak ditampilkan sebelum formulir */
+    }
+    
+    .submit-button {
+        width: 100%; /* Tombol submit penuh */
+    }
+
+}
