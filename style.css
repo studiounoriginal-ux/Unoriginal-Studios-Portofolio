@@ -800,7 +800,7 @@ a.work-link {
     /* Gaya untuk Logo Gambar di Header */
     }
 .main-header .logo img {
-    height: 50px; /* Atur tinggi logo sesuai kebutuhan Anda */
+    height: 30px; /* Atur tinggi logo sesuai kebutuhan Anda */
     width: auto; /* Lebar akan menyesuaikan secara proporsional */
     vertical-align: middle; /* Memastikan logo sejajar dengan elemen lain jika ada */
     transition: transform 0.3s ease; /* Efek hover ringan */
@@ -972,4 +972,5 @@ a.work-link {
         font-size: 1.8rem;
     }
 }
+
 
