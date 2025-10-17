@@ -844,6 +844,72 @@ a.work-link {
 /* ========================================================= */
 
 @media (max-width: 768px) {
+
+/* ========================================================= */
+/* ====== UI TINGKAT LANJUT (Di dalam @media (max-width: 768px)) ====== */
+/* ========================================================= */
+@media (max-width: 768px) {
+    
+    /* HEADER dan NAVIGASI */
+    .main-header .container {
+        /* Kontrol penempatan hamburger */
+        justify-content: space-between; 
+    }
+    
+    /* Tampilkan Hamburger Menu */
+    .hamburger-menu {
+        display: block; 
+    }
+
+    /* Atur Navigasi untuk Dropdown Mobile */
+    .main-nav {
+        /* Posisi tetap, menutupi seluruh layar */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95); /* Latar belakang gelap transparan */
+        z-index: 100;
+        
+        /* Default: Sembunyikan menu */
+        transform: translateX(100%); 
+        transition: transform 0.4s ease-in-out;
+        
+        /* Atur flex agar konten berada di tengah */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Saat menu aktif, geser ke posisi 0 */
+    .main-nav.menu-open {
+        transform: translateX(0);
+    }
+
+    .main-nav ul {
+        /* Overwrite display: none dari kode lama */
+        display: block; 
+        text-align: center;
+        padding: 0;
+    }
+    
+    .main-nav li {
+        margin: 40px 0; /* Jarak antar item besar */
+    }
+
+    .main-nav a {
+        font-size: 2rem; /* Teks menu besar dan mudah diklik */
+        font-weight: 900;
+        color: #cccccc;
+    }
+    
+    .main-nav a:hover {
+        color: #007bff;
+    }
+    
+    /* ... kode responsif lainnya ... */
+}
     
     /* PENGATURAN GLOBAL MOBILE */
     body {
@@ -974,5 +1040,40 @@ a.work-link {
     }
 }
 
+/* Gaya Tombol Hamburger (Tersembunyi di Desktop) */
+.hamburger-menu {
+    display: none; /* Default: Sembunyikan di Desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 101; /* Pastikan di atas menu */
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Gaya Transisi Hamburger menjadi Silang (X) */
+.hamburger-menu.is-active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
 
 
