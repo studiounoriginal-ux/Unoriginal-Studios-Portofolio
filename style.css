@@ -840,169 +840,135 @@ a.work-link {
 }
 
 /* ========================================================= */
-/* ====== RESPONSIF UTAMA (Untuk Mobile dan Tablet Kecil) ====== */
+/* ====== UI TINGKAT LANJUT (Di dalam @media (max-width: 768px)) ====== */
 /* ========================================================= */
+
 @media (max-width: 768px) {
     
-    /* PENGATURAN UMUM */
-    .container {
-        padding: 0 15px; /* Kurangi padding horizontal agar konten lebih lebar */
+    /* PENGATURAN GLOBAL MOBILE */
+    body {
+        font-size: 16px; /* Pastikan font dasar nyaman dibaca */
     }
 
-    /* HEADER */
+    /* HEADER dan NAVIGASI */
     .main-header {
-        padding: 10px 0; /* Header lebih tipis */
-    }
-
-    .main-nav ul {
-        /* Sembunyikan navigasi utama dan pertimbangkan menu hamburger (diluar lingkup CSS murni) */
-        display: none; 
-        /* Untuk portofolio sederhana, kita bisa biarkan ikon saja */
+        padding: 10px 0;
     }
     
     .logo img {
-        height: 30px; /* Pastikan logo tetap kecil */
+        height: 30px; 
     }
     
+    /* Karena navigasi utama (.main-nav ul) disembunyikan, 
+       pastikan tautan ikon atau hamburger menu (jika ada) berada di posisi yang baik. 
+       Untuk saat ini, kita akan fokus pada konten. */
+    
     /* HERO SECTION */
+    .hero-section {
+        height: 70vh; /* Perkecil tinggi hero agar konten cepat terlihat */
+        /* Sesuaikan tinggi hero agar CTA tidak terpotong di layar pendek */
+    }
+
     .hero-content h1 {
-        font-size: 2.5rem; /* Judul Hero diperkecil */
+        font-size: 2.2rem; /* Judul yang lebih mudah ditangani di layar sempit */
+        line-height: 1.2;
+        margin-bottom: 15px;
     }
 
     .hero-content p {
-        font-size: 1rem;
-    }
-    
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
-    /* WORKS SECTION (Portofolio) */
-    .works-section h2 {
-        font-size: 2rem;
+        font-size: 0.95rem;
         margin-bottom: 30px;
     }
+    
+    /* SPASI VERTIKAL ANTAR SECTION */
+    .works-section,
+    .about-content-section,
+    .team-section,
+    .news-list-section,
+    .contact-section {
+        padding: 60px 0; /* Kurangi spasi vertikal antar section */
+    }
+    
+    /* WORKS SECTION (Portofolio) */
+    .works-section h2 {
+        font-size: 2.5rem; /* Judul section tetap besar, tapi tidak terlalu dominan */
+        margin-bottom: 40px;
+    }
+    
+    .work-info h3 {
+        font-size: 1.3rem; /* Judul proyek tidak terlalu besar */
+    }
+    
+    .work-info p {
+        font-size: 0.85rem;
+    }
 
-    .works-grid {
-        /* Grid tetap dengan 1 kolom atau 2 kolom kecil */
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+    /* PROJECT DETAIL PAGE */
+    .project-main h2 {
+        font-size: 1.8rem; /* Judul sub-bagian lebih kecil */
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    
+    .project-title {
+        font-size: 2.8rem;
+    }
+    
+    .project-tagline {
+        font-size: 1rem;
     }
 
     /* NEWS PAGE */
     .news-title {
         font-size: 3rem;
     }
-
-    /* Pindahkan item berita ke mode tumpukan (Stack mode) */
+    
     .news-item {
-        flex-wrap: wrap; 
-        padding: 15px 10px;
-        align-items: flex-start;
-    }
-
-    .news-date {
-        flex: 0 0 100%; /* Tanggal ambil 100% lebar */
-        margin-bottom: 5px;
+        /* Tambahkan efek padding horizontal lebih baik */
+        padding: 20px 0; 
+        border-left: none; /* Hapus border kiri di mobile agar tidak memakan tempat */
     }
     
-    .news-category {
-        margin-right: 15px;
-        margin-bottom: 10px;
+    .news-item:hover {
+        transform: none; /* Hapus efek slide di mobile */
+        border-left: none;
+        background-color: #1a1a1a;
     }
 
     .news-heading {
-        font-size: 1.1rem;
-        flex: 1 1 0%;
-    }
-    
-    .news-filter {
-        /* Buat filter menjadi tombol blok kecil */
-        text-align: left;
-    }
-    
-    .filter-item {
-        display: inline-block;
-        margin: 5px 5px 5px 0;
-        padding: 8px 15px;
-        font-size: 0.8rem;
-    }
-
-    /* ABOUT US PAGE */
-    .about-title {
-        font-size: 3.5rem;
-    }
-    
-    .about-tagline {
-        font-size: 1.2rem;
-    }
-
-    .content-split {
-        flex-direction: column; /* Teks dan Gambar bertumpuk */
-        gap: 30px;
-    }
-    
-    .split-text h2 {
-        font-size: 2rem;
-    }
-    
-    .team-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-    
-    .team-member {
-        max-width: 100%; 
-        width: 90%; 
-    }
-
-    /* PROJECT DETAIL PAGE */
-    .project-header {
-        height: 40vh; /* Perkecil header visual */
-    }
-    
-    .project-content {
-        flex-direction: column; /* Detail utama dan sidebar bertumpuk */
-        gap: 30px;
-        padding-bottom: 50px;
-    }
-
-    .project-title {
-        font-size: 2.5rem;
-    }
-
-    .project-sidebar {
-        order: -1; /* Pindahkan sidebar (info box) ke atas di mobile */
-    }
-
-    .info-box {
-        position: static; /* Non-sticky di mobile */
-        top: auto;
+        font-size: 1.15rem;
+        line-height: 1.4;
     }
     
     /* CONTACT PAGE */
-    .contact-title {
-        font-size: 3rem;
-    }
-    
-    .contact-subtitle {
-        font-size: 1rem;
-        margin-bottom: 40px;
+    .contact-form-container h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
     }
 
-    .contact-content-split {
-        flex-direction: column; /* Formulir dan detail bertumpuk */
-        gap: 40px;
+    .contact-details h2 {
+        font-size: 1.5rem;
     }
-    
-    .contact-details {
-        order: -1; /* Detail kontak ditampilkan sebelum formulir */
-    }
-    
+
     .submit-button {
-        width: 100%; /* Tombol submit penuh */
+        font-size: 1rem;
+        padding: 12px 25px;
     }
+    
+    /* FOOTER */
+    .main-footer {
+        padding: 20px 0;
+        font-size: 0.85rem;
+    }
+}
 
+/* Penyesuaian khusus untuk layar sangat kecil (seperti iPhone SE) */
+@media (max-width: 450px) {
+    .contact-title, .about-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
 }
