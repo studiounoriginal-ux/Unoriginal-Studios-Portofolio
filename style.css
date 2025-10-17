@@ -856,7 +856,7 @@ a.work-link {
     }
     
     .logo img {
-        height: 30px; 
+        height: 15px; 
     }
     
     /* Karena navigasi utama (.main-nav ul) disembunyikan, 
@@ -972,3 +972,4 @@ a.work-link {
         font-size: 1.8rem;
     }
 }
+
