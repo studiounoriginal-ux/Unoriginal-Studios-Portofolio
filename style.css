@@ -851,12 +851,14 @@ a.work-link {
     }
 
     /* HEADER dan NAVIGASI */
-    .main-header {
-        padding: 10px 0;
+  .main-header {
+        /* Kurangi padding vertikal di sini untuk membuat header lebih tipis */
+        padding: 8px 0; 
     }
-    
+
     .logo img {
-        height: 15px; 
+        /* KURANGI UKURAN LOGO LEBIH LANJUT */
+        height: 25px; /* Coba 25px. Ini akan membuat logo sangat kecil dan ringkas */
     }
     
     /* Karena navigasi utama (.main-nav ul) disembunyikan, 
@@ -964,13 +966,13 @@ a.work-link {
 
 /* Penyesuaian khusus untuk layar sangat kecil (seperti iPhone SE) */
 @media (max-width: 450px) {
-    .contact-title, .about-title {
-        font-size: 2.5rem;
-    }
+    /* ... kode sebelumnya ... */
     
-    .hero-content h1 {
-        font-size: 1.8rem;
+    /* Pastikan header juga ringkas di resolusi terkecil */
+    .main-header {
+        padding: 5px 0; 
     }
 }
+
 
 
