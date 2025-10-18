@@ -1001,3 +1001,142 @@ a {
         padding: 5px 0; 
     }
 }
+
+/* ========================================================= */
+/* ====== NEWS DETAIL PAGE STYLES ====== */
+/* ========================================================= */
+
+.article-section {
+    padding-top: 100px; /* Jarak dari header */
+    padding-bottom: 80px;
+    background-color: #121212;
+}
+
+.article-section .container {
+    max-width: 850px; /* Lebar artikel yang ideal untuk keterbacaan */
+}
+
+/* Judul Artikel */
+.article-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    line-height: 1.3;
+    color: #ffffff;
+}
+
+/* Metadata (Tanggal & Kategori) */
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #222;
+}
+
+.meta-date {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.meta-category {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 3px;
+    color: #0a0a0a;
+    text-transform: uppercase;
+}
+/* Warna kategori akan diwariskan dari gaya .category-works, dll. */
+
+
+/* Visual Utama Artikel */
+.article-image-container {
+    margin-bottom: 30px;
+}
+
+.article-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.image-caption {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Konten Utama Artikel */
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #cccccc;
+}
+
+.article-content h2 {
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+}
+
+/* Blockquote (Kutipan) */
+blockquote {
+    border-left: 5px solid #007bff; /* Garis aksen biru */
+    padding-left: 20px;
+    margin: 30px 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #a0a0a0;
+}
+
+.article-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.back-to-news {
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.back-to-news:hover {
+    color: #ffffff;
+}
+
+/* Tambahkan penyesuaian Mobile untuk article-section di media query */
+@media (max-width: 768px) {
+    .article-section {
+        padding-top: 80px;
+        padding-bottom: 40px;
+    }
+    
+    .article-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .article-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .article-content {
+        font-size: 1rem;
+    }
+    
+    blockquote {
+        font-size: 1.1rem;
+        padding-left: 15px;
+    }
+}
