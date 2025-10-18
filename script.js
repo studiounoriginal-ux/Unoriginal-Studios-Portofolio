@@ -48,27 +48,10 @@ const newsData = [
     {
         date: "2025.10.17",
         category: "Karya",
-        heading: 'Proyek Baru: Anime "Prajurit Kosmik" Diumumkan!',
+        heading: 'Proyek Baru: Anime "When Our Minds Deceive" Diumumkan!',
         link: "news-detail-a.html" // Link UNIK
     },
-    {
-        date: "2025.10.15",
-        category: "Karya",
-        heading: 'Anime "Judul Fantasi" Diumumkan, Tayang Musim Semi 2026!',
-        link: "news-detail-b.html" // Link UNIK
-    },
-    {
-        date: "2025.09.28",
-        category: "Event",
-        heading: "UNORIGINAL STUDIOS Hadir di Event Komik Internasional",
-        link: "news-detail-c.html" // Link UNIK
-    },
-    {
-        date: "2025.08.20",
-        category: "Perusahaan",
-        heading: "UNORIGINAL STUDIOS Membuka Divisi Produksi CGI Baru di Surabaya",
-        link: "news-detail-d.html" // Link UNIK
-    },
+   
     // ... Tambahkan berita baru di sini dengan link unik ...
 ];
 
@@ -141,4 +124,5 @@ const newsData = [
     }
 
 });
+
 
