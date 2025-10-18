@@ -35,44 +35,44 @@ document.addEventListener("DOMContentLoaded", function() {
     // =========================================================
 
     // DATA BERITA (Edit array ini untuk menambah/mengubah berita)
-    const newsData = [
-        {
-            date: "2025.10.17",
-            category: "Karya",
-            heading: 'Proyek Baru: Anime "Prajurit Kosmik" Diumumkan!',
-            link: "#" 
-        },
-        {
-            date: "2025.10.15",
-            category: "Karya",
-            heading: 'Anime "Judul Fantasi" Diumumkan, Tayang Musim Semi 2026!',
-            link: "#" 
-        },
-        {
-            date: "2025.09.28",
-            category: "Event",
-            heading: "STUDIOANDA Hadir di Event Komik Internasional bulan November",
-            link: "#"
-        },
-        {
-            date: "2025.09.05",
-            category: "Karya",
-            heading: "Trailer Resmi Proyek A dirilis!",
-            link: "#"
-        },
-        {
-            date: "2025.08.20",
-            category: "Perusahaan",
-            heading: "STUDIOANDA Membuka Divisi Produksi CGI Baru di Surabaya",
-            link: "#"
-        },
-        {
-            date: "2025.07.01",
-            category: "Perusahaan",
-            heading: "Rekrutmen Animator 3D Dibuka untuk Proyek Baru",
-            link: "#"
-        }
-    ];
+   // script.js
+
+// ... (kode Hamburger Menu dan Intersection Observer lainnya) ...
+
+// =========================================================
+// 2. LOGIKA MEMUAT BERITA DARI JSON (Untuk page news.html)
+// =========================================================
+
+// DATA BERITA (Edit array ini untuk menambah/mengubah berita)
+const newsData = [
+    {
+        date: "2025.10.17",
+        category: "Karya",
+        heading: 'Proyek Baru: Anime "Prajurit Kosmik" Diumumkan!',
+        link: "news-detail-a.html" // Link UNIK
+    },
+    {
+        date: "2025.10.15",
+        category: "Karya",
+        heading: 'Anime "Judul Fantasi" Diumumkan, Tayang Musim Semi 2026!',
+        link: "news-detail-b.html" // Link UNIK
+    },
+    {
+        date: "2025.09.28",
+        category: "Event",
+        heading: "UNORIGINAL STUDIOS Hadir di Event Komik Internasional",
+        link: "news-detail-c.html" // Link UNIK
+    },
+    {
+        date: "2025.08.20",
+        category: "Perusahaan",
+        heading: "UNORIGINAL STUDIOS Membuka Divisi Produksi CGI Baru di Surabaya",
+        link: "news-detail-d.html" // Link UNIK
+    },
+    // ... Tambahkan berita baru di sini dengan link unik ...
+];
+
+// ... (lanjutan kode loadNews dan Intersection Observer) ...
 
     function loadNews() {
         const container = document.getElementById('news-list-container');
@@ -141,3 +141,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+
